@@ -52,8 +52,11 @@
         <label for="idade"> Idade:</label>
         <input type="number" id="idade" name="idade" required>
         <input type="submit" value="cadastrar">
-
+       
       </form>
+      <form action="listar.php" method="get" style="margin-top:10px;">
+                <input type="submit" value="Ver Lista de Pessoas">
+            </form>
 
      </section>
      </div>

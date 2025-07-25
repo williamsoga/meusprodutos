@@ -1,32 +1,32 @@
 <?php 
-class Pessoa {
+class Produto {
     private $conexao;
-    private $nome_tabela = "pessoas";
+    private $nome_tabela = "produto";
 
     public $id;
     public $nome;
-    public $idade;
+    public $preco;
 
     public function __construct($db) {
         $this->conexao = $db;
     }
 
     public function criar() {
-        $query = "INSERT INTO " . $this->nome_tabela . " (nome, idade) VALUES (:nome, :idade)";
+        $query = "INSERT INTO " . $this->nome_tabela . " (nome, preco) VALUES (:nome, :preco)";
         $stmt = $this->conexao->prepare($query);
 
         // Limpa dados
         $this->nome = htmlspecialchars(strip_tags($this->nome));
-        $this->idade = htmlspecialchars(strip_tags($this->idade));
+        $this->preco = htmlspecialchars(strip_tags($this->preco));
 
         $stmt->bindParam(":nome", $this->nome);
-        $stmt->bindParam(":idade", $this->idade);
+        $stmt->bindParam(":preco", $this->preco);
 
         return $stmt->execute();
     }
 
     public function ler() {
-        $query = "SELECT id, nome, idade FROM " . $this->nome_tabela . " ORDER BY nome ASC";
+        $query = "SELECT id, nome, preco FROM " . $this->nome_tabela . " ORDER BY nome ASC";
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();
         return $stmt;
@@ -37,17 +37,17 @@ class Pessoa {
 
     public function atualizar() {
         $query = "UPDATE " . $this->nome_tabela . " 
-                  SET nome = :nome, idade = :idade 
+                  SET nome = :nome, preco = :preco 
                   WHERE id = :id";
     
         $stmt = $this->conexao->prepare($query);
     
         $this->nome = htmlspecialchars(strip_tags($this->nome));
-        $this->idade = htmlspecialchars(strip_tags($this->idade));
+        $this->preco = htmlspecialchars(strip_tags($this->preco));
         $this->id = htmlspecialchars(strip_tags($this->id));
     
         $stmt->bindParam(":nome", $this->nome);
-        $stmt->bindParam(":idade", $this->idade);
+        $stmt->bindParam(":preco", $this->preco);
         $stmt->bindParam(":id", $this->id);
     
         return $stmt->execute();
