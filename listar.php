@@ -106,7 +106,7 @@
     </section>
 
     <div style="text-align:center; margin-top:20px;">
-        <form action="cadastrar_pessoa.php" method="get" style="display:inline;">
+        <form action="integracao.php" method="get" style="display:inline;">
             <input type="submit" value="Cadastrar Pessoa">
         </form>
         <form action="cadastrar_produto.php" method="get" style="display:inline; margin-left:10px;">
